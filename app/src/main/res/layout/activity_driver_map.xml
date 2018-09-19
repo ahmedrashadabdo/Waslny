@@ -1,0 +1,313 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    tools:context="com.waslnyapp.waslny.driver.DriverMapActivity">
+
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Working"
+            android:layout_marginTop="35dp"
+            android:layout_marginLeft="@dimen/space10"
+            android:id="@+id/workingSwitch"
+            android:theme="@style/SCBSwitch"/>
+
+            <!--Floating Action Menu  -->
+        <com.github.clans.fab.FloatingActionMenu
+            android:id="@+id/menu_down"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:elevation="6dp"
+            fab:menu_labels_ellipsize="end"
+            fab:menu_labels_singleLine="true"
+            fab:menu_fab_size="mini"
+            fab:menu_openDirection="down"
+            fab:menu_colorNormal="@color/colorPrimary"
+            fab:menu_colorPressed="@color/colorPrimary">
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/logout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_logout"
+                fab:fab_size="mini"
+                fab:fab_label="Logout"
+                fab:fab_colorNormal="#FACF3C"
+                fab:fab_colorPressed="#FACF3C" />
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/saved"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_history"
+                fab:fab_size="mini"
+                fab:fab_label="Saved"
+                fab:fab_colorNormal="#FACF3C"
+                fab:fab_colorPressed="#FACF3C"/>
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_profile"
+                fab:fab_size="mini"
+                fab:fab_label="Profile"
+                fab:fab_colorNormal="#FACF3C"
+                fab:fab_colorPressed="#FACF3C"/>
+
+        </com.github.clans.fab.FloatingActionMenu>
+
+    </LinearLayout>
+
+            <!--customer info section -->
+
+    <FrameLayout
+        android:layout_width="299dp"
+        android:layout_height="380dp"
+        android:layout_gravity="center"
+        >
+        <LinearLayout
+            android:layout_width="299dp"
+            android:layout_height="380dp"
+            android:id="@+id/customerInfo"
+            android:layout_gravity="bottom"
+            android:orientation="vertical"
+            android:background="@drawable/bg"
+            android:visibility="gone"
+            >
+
+            <LinearLayout
+                android:id="@+id/txtcustomerinfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="28dp"
+                android:layout_marginLeft="30dp"
+                >
+
+                <ImageView
+                    android:layout_weight="0.8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_driverinfo"
+                    />
+                <com.waslnyapp.waslny.customfonts.MyTextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Customer Information"
+                    android:textColor="@color/white"
+                    android:textSize="17dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/profilephoto"
+                android:layout_below="@+id/txtcustomerinfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                >
+
+                <ImageView
+                    android:layout_width="100sp"
+                    android:layout_height="100sp"
+                    android:id="@+id/customerProfileImage"
+                    android:src="@mipmap/ic_default_user"
+                    android:padding="8dp"
+                    android:gravity="center"
+                    android:layout_gravity="center"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/tvusername"
+                android:layout_below="@+id/profilephoto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                >
+
+                <com.waslnyapp.waslny.customfonts.MyTextView
+                    android:layout_weight="0.8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="UserName:"
+                    android:textColor="@color/text"
+                    android:textSize="15dp"
+                    android:gravity="right"
+                    android:layout_gravity="center"
+                    android:textAlignment="center"
+                    />
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:id="@+id/customerName"
+                    android:textColor="@color/textred"
+                    android:textSize="15dp"
+                    android:layout_marginLeft="6dp"
+                    android:gravity="left"
+                    android:layout_gravity="center"/>
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/div1"
+                android:layout_below="@+id/ordernumber"
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="@color/div"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                ></View>
+
+            <LinearLayout
+                android:id="@+id/tvphoneno"
+                android:layout_below="@+id/tvusername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="3dp"
+                >
+
+                <com.waslnyapp.waslny.customfonts.MyTextView
+                    android:layout_weight="0.8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Phone No.:"
+                    android:textColor="@color/text"
+                    android:textSize="15dp"
+                    android:gravity="right"
+                    android:layout_gravity="center"
+                    android:textAlignment="center"
+                    />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:id="@+id/customerPhone"
+                    android:textColor="@color/textred"
+                    android:textSize="15dp"
+                    android:layout_marginLeft="6dp"
+                    android:gravity="left"
+                    android:layout_gravity="center"/>
+
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/div2"
+                android:layout_below="@+id/ordernumber2"
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="@color/div"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                ></View>
+
+            <LinearLayout
+                android:id="@+id/tvdestination"
+                android:layout_below="@+id/div2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <com.waslnyapp.waslny.customfonts.MyTextView
+                    android:layout_weight="0.8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Destination:"
+                    android:textColor="@color/text"
+                    android:textSize="15dp"
+                    android:gravity="right"
+                    android:layout_gravity="center"
+                    android:textAlignment="center"
+                    />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:id="@+id/customerDestination"
+                    android:textColor="@color/textred"
+                    android:textSize="15dp"
+                    android:layout_marginLeft="6dp"
+                    android:gravity="left"
+                    android:layout_gravity="center"/>
+
+            </LinearLayout>
+
+            <!-- Picked User Button -->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_alignParentBottom="true"
+                android:weightSum="2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="35dp"
+                    android:layout_marginBottom="@dimen/space15"
+                    android:layout_marginLeft="@dimen/space5"
+                    android:layout_marginRight="@dimen/space5"
+                    android:text="reject User"
+                    android:id="@+id/reject"
+                    style="@style/ButtonReject"/>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="35dp"
+                    android:layout_marginBottom="@dimen/space15"
+                    android:layout_marginLeft="@dimen/space5"
+                    android:layout_marginRight="@dimen/space5"
+                    android:text="picked User"
+                    android:id="@+id/rideStatus"
+                    style="@style/ButtonOrange"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</FrameLayout>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+                 <!--App Color-->
+    <color name="colorPrimary">#FACF3C</color>
+    <color name="orangelight">#FF6250</color>
+    <color name="white">#FFFFFF</color>
+
+    <color name="div">#d5c5a4</color>
+    <color name="text">#32353e</color>
+    <color name="textred">#ca362c</color>
+
+                  <!--Switch Color-->
+    <color name="disable_forground_grey">#42221f1f</color>
+    <color name="disable_thumb_grey">#42221f1f</color>
+    <color name="enable_thumb_green">#FACF3C</color>
+
+                 <!--Rating Bar Color-->
+    <color name="duskYellow">#FACF3C</color>
+    <color name="lightGrey">#D3D3D3</color>
+
+</resources>

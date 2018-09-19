@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "606709828426",
+    "firebase_url": "https://waslnyapp.firebaseio.com",
+    "project_id": "waslnyapp",
+    "storage_bucket": "waslnyapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:606709828426:android:ec5e89f14d3027fe",
+        "android_client_info": {
+          "package_name": "com.waslnyapp.waslny"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "606709828426-f2gikjcjvl12ife7esmeip3hac7kcl8k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.waslnyapp.waslny",
+            "certificate_hash": "af596f05aa00157d2208b2e04abd17c325eda7ac"
+          }
+        },
+        {
+          "client_id": "606709828426-606hsapqdd0hl313oe5frb3g21clvmss.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdDn2Fxi9DvteTuMDAmHtL08p48gPfEcs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "606709828426-606hsapqdd0hl313oe5frb3g21clvmss.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

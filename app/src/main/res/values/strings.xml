@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Waslny</string>
+    <string name="title_activity_driver_map">Map</string>
+    <string name="title_activity_main">MainActivity</string>
+
+
+                    <!--Phone Auth-->
+    <string name="verify_note">To get access to missal readings, prayers and lots more, kindly log in with your mobile number.</string>
+    <string name="code_instructions">Your details would never be shared</string>
+</resources>

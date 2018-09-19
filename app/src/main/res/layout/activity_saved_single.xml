@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.waslnyapp.waslny.SavedSingleActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/gradiennt2">
+
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:id="@+id/map"/>
+
+        <FrameLayout
+            android:layout_width="299dp"
+            android:layout_height="420dp"
+            android:layout_gravity="center"
+
+            >
+            <LinearLayout
+                android:layout_width="299dp"
+                android:layout_height="420dp"
+                android:id="@+id/customerInfo"
+                android:layout_gravity="bottom"
+                android:orientation="vertical"
+                android:background="@drawable/bg"
+                android:visibility="visible"
+                >
+
+                <LinearLayout
+                    android:id="@+id/txthistory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="31dp"
+                    android:layout_marginLeft="60dp"
+                    >
+
+                    <ImageView
+                        android:layout_weight="0.8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_history"
+                        />
+
+                    <com.waslnyapp.waslny.customfonts.MyTextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Saved Trip"
+                        android:textColor="@color/white"
+                        android:textSize="17dp"
+                        android:gravity="center"
+                        android:layout_marginLeft="@dimen/space20"
+                        android:layout_marginTop="5dp"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/profilephoto"
+                    android:layout_below="@+id/txtcustomerinfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="0dp"
+                    >
+
+                    <ImageView
+                        android:layout_width="100sp"
+                        android:layout_height="100sp"
+                        android:id="@+id/userImage"
+                        android:src="@mipmap/ic_default_user"
+                        android:padding="5dp"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/space5"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/tvusername"
+                    android:layout_below="@+id/profilephoto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/space5"
+                    >
+
+                    <com.waslnyapp.waslny.customfonts.MyTextView
+                        android:layout_weight="0.8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="UserName:"
+                        android:textColor="@color/text"
+                        android:textSize="15dp"
+                        android:gravity="right"
+                        android:layout_gravity="center"
+                        android:textAlignment="center"
+                        />
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:id="@+id/userName"
+                        android:textColor="@color/textred"
+                        android:textSize="12dp"
+                        android:layout_marginLeft="6dp"
+                        android:gravity="left"
+                        android:layout_gravity="center"/>
+
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/div1"
+                    android:layout_below="@+id/ordernumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:background="@color/div"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    ></View>
+
+                <LinearLayout
+                    android:id="@+id/tvphoneno"
+                    android:layout_below="@+id/tvusername"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="2dp"
+                    >
+
+                    <com.waslnyapp.waslny.customfonts.MyTextView
+                        android:layout_weight="0.8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Phone No.:"
+                        android:textColor="@color/text"
+                        android:textSize="15dp"
+                        android:gravity="right"
+                        android:layout_gravity="center"
+                        android:textAlignment="center"
+                        />
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:id="@+id/userPhone"
+                        android:textColor="@color/textred"
+                        android:textSize="15dp"
+                        android:layout_marginLeft="6dp"
+                        android:gravity="left"
+                        android:layout_gravity="center"/>
+
+
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/div2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:background="@color/div"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    ></View>
+
+                <LinearLayout
+                    android:id="@+id/tvdestination"
+                    android:layout_below="@+id/div2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="2dp"
+                    >
+
+                    <com.waslnyapp.waslny.customfonts.MyTextView
+                        android:layout_weight="0.8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="From - To:"
+                        android:textColor="@color/text"
+                        android:textSize="15dp"
+                        android:gravity="right"
+                        android:layout_gravity="center"
+                        android:textAlignment="center"
+                        />
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:id="@+id/rideLocation"
+                        android:textColor="@color/textred"
+                        android:textSize="15dp"
+                        android:layout_marginLeft="6dp"
+                        android:gravity="left"
+                        android:layout_gravity="center"/>
+
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/div3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:background="@color/div"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    ></View>
+
+                <LinearLayout
+                    android:id="@+id/tvFromTo"
+                    android:layout_below="@+id/tvdestination"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="2dp"
+                    >
+
+                    <com.waslnyapp.waslny.customfonts.MyTextView
+                        android:layout_weight="0.8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Distance:"
+                        android:textColor="@color/text"
+                        android:textSize="15dp"
+                        android:gravity="right"
+                        android:layout_gravity="center"
+                        android:textAlignment="center"
+                        />
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:id="@+id/rideDistance"
+                        android:textColor="@color/textred"
+                        android:textSize="15dp"
+                        android:layout_marginLeft="6dp"
+                        android:gravity="left"
+                        android:layout_gravity="center"/>
+
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/div4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:background="@color/div"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    ></View>
+
+                <LinearLayout
+                    android:id="@+id/tvdate"
+                    android:layout_below="@+id/tvFromTo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="2dp"
+                    >
+
+                    <com.waslnyapp.waslny.customfonts.MyTextView
+                        android:layout_weight="0.8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="TimeDate:"
+                        android:textColor="@color/text"
+                        android:textSize="15dp"
+                        android:gravity="right"
+                        android:layout_gravity="center"
+                        android:textAlignment="center"
+                        />
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:id="@+id/rideDate"
+                        android:textColor="@color/textred"
+                        android:textSize="15dp"
+                        android:layout_marginLeft="6dp"
+                        android:gravity="left"
+                        android:layout_gravity="center"/>
+                </LinearLayout>
+
+                <!--<RatingBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/ratingBar"
+                    android:layout_gravity="center"
+                    android:numStars="5"
+                    android:stepSize="1"
+                    android:layout_marginTop="@dimen/space10"
+                    android:visibility="gone"/>-->
+
+                <RatingBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/ratingBar"
+                    android:layout_gravity="center"
+                    android:numStars="5"
+                    android:stepSize="1"
+                    android:layout_marginTop="@dimen/space5"
+                    android:clickable="false"
+                    android:focusableInTouchMode="false"
+                    android:focusable="false"
+                    android:isIndicator="true"
+                    android:visibility="visible"/>
+
+               <!-- <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/pay"
+                    android:text="Pay Here"
+                    android:visibility="visible"
+                    android:enabled="false"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="@dimen/space5"
+                    android:layout_marginBottom="@dimen/space5"
+                    style="@style/ButtonOrange"/>-->
+
+            </LinearLayout>
+        </FrameLayout>
+
+       <!-- LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20sp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="From - To"
+                android:layout_marginBottom="20sp"
+                android:id="@+id/rideLocation"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="distance"
+                android:layout_marginBottom="20sp"
+                android:id="@+id/rideDistance"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="date"
+                android:layout_marginBottom="20sp"
+                android:id="@+id/rideDate"/>
+        </LinearLayout>-->
+
+        <!--<LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/userImage"
+                android:src="@mipmap/ic_default_user"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20sp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="name"
+                    android:layout_marginBottom="20sp"
+                    android:id="@+id/userName"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="phone"
+                    android:layout_marginBottom="20sp"
+                    android:id="@+id/userPhone"/>
+            </LinearLayout>
+        </LinearLayout>-->
+
+        <!--<RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ratingBar"
+            android:layout_gravity="center"
+            android:numStars="5"
+            android:stepSize="1"
+            android:clickable="false"
+android:focusableInTouchMode="false"
+android:focusable="false"
+            android:visibility="visible"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/pay"
+            android:text="Pay Here"
+            android:visibility="visible"
+            android:enabled="false"/>-->
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

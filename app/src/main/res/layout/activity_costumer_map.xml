@@ -1,0 +1,351 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    tools:context="com.waslnyapp.waslny.customer.CustomerMapActivity">
+
+
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+                <!--Pleace AutoComplete Section -->
+        <!--Floating Action Menu and Card View Section -->
+
+        <RelativeLayout
+            android:id="@+id/rlSearchPlacement"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+                <!-- Card View Auto Complete Place  -->
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20sp">
+                <fragment
+                    android:id="@+id/place_autocomplete_fragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
+                    />
+            </android.support.v7.widget.CardView>
+
+                <!--Floating Action Menu  -->
+            <com.github.clans.fab.FloatingActionMenu
+                android:id="@+id/menu_down"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="220dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:elevation="6dp"
+                fab:menu_labels_ellipsize="end"
+                fab:menu_labels_singleLine="true"
+                fab:menu_fab_size="mini"
+                fab:menu_openDirection="up"
+                fab:menu_colorNormal="@color/colorPrimary"
+                fab:menu_colorPressed="@color/colorPrimary">
+
+                <com.github.clans.fab.FloatingActionButton
+                    android:id="@+id/logout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_logout"
+                    fab:fab_size="mini"
+                    fab:fab_label="Logout"
+                    fab:fab_colorNormal="#FACF3C"
+                    fab:fab_colorPressed="#FACF3C" />
+
+                <com.github.clans.fab.FloatingActionButton
+                    android:id="@+id/saved"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_history"
+                    fab:fab_size="mini"
+                    fab:fab_label="Saved"
+                    fab:fab_colorNormal="#FACF3C"
+                    fab:fab_colorPressed="#FACF3C"/>
+
+                <com.github.clans.fab.FloatingActionButton
+                    android:id="@+id/profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_profile"
+                    fab:fab_size="mini"
+                    fab:fab_label="Profile"
+                    fab:fab_colorNormal="#FACF3C"
+                    fab:fab_colorPressed="#FACF3C"/>
+
+            </com.github.clans.fab.FloatingActionMenu>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="bottom">
+
+            <!--Driver Info Section ( Hidden ) -->
+            <FrameLayout
+                android:layout_width="299dp"
+                android:layout_height="380dp"
+                android:layout_gravity="center"
+
+                >
+                <LinearLayout
+                    android:layout_width="299dp"
+                    android:layout_height="380dp"
+                    android:id="@+id/driverInfo"
+                    android:layout_gravity="bottom"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg"
+                    android:visibility="gone"
+                    >
+                    <LinearLayout
+                        android:id="@+id/txtdriverinfo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginLeft="49dp"
+                        >
+                        <ImageView
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_driverinfo"
+                            />
+                        <com.waslnyapp.waslny.customfonts.MyTextView
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Driver Information"
+                            android:textColor="@color/white"
+                            android:textSize="17dp"
+                            android:gravity="center"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/profilephoto"
+                        android:layout_below="@+id/txtdriverinfo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        >
+                        <ImageView
+                            android:layout_width="100sp"
+                            android:layout_height="100sp"
+                            android:id="@+id/driverProfileImage"
+                            android:src="@mipmap/ic_default_user"
+                            android:padding="8dp"
+                            android:gravity="center"
+                            android:layout_gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/tvusername"
+                        android:layout_below="@+id/profilephoto"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="10dp"
+                        >
+
+                        <com.waslnyapp.waslny.customfonts.MyTextView
+                            android:layout_weight="0.8"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="DriverName:"
+                            android:textColor="@color/text"
+                            android:textSize="15dp"
+                            android:gravity="right"
+                            android:layout_gravity="center"
+                            android:textAlignment="center"
+                            />
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:id="@+id/driverName"
+                            android:textColor="@color/textred"
+                            android:textSize="15dp"
+                            android:layout_marginLeft="6dp"
+                            android:gravity="left"
+                            android:layout_gravity="center"/>
+
+                    </LinearLayout>
+
+                    <View
+                        android:id="@+id/div1"
+                        android:layout_below="@+id/ordernumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="1dp"
+                        android:background="@color/div"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        ></View>
+
+                    <LinearLayout
+                        android:id="@+id/tvphoneno"
+                        android:layout_below="@+id/ordernumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="3dp"
+                        >
+
+                        <com.waslnyapp.waslny.customfonts.MyTextView
+                            android:layout_weight="0.8"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Phone No.:"
+                            android:textColor="@color/text"
+                            android:textSize="15dp"
+                            android:gravity="right"
+                            android:layout_gravity="center"
+                            android:textAlignment="center"
+                            />
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:id="@+id/driverPhone"
+                            android:textColor="@color/textred"
+                            android:textSize="15dp"
+                            android:layout_marginLeft="6dp"
+                            android:gravity="left"
+                            android:layout_gravity="center"/>
+
+
+                    </LinearLayout>
+
+                    <View
+                        android:id="@+id/div2"
+                        android:layout_below="@+id/ordernumber2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="1dp"
+                        android:background="@color/div"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        ></View>
+
+                    <LinearLayout
+                        android:id="@+id/tvcarname"
+                        android:layout_below="@+id/div2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        >
+
+                        <com.waslnyapp.waslny.customfonts.MyTextView
+                            android:layout_weight="0.8"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Car Name:"
+                            android:textColor="@color/text"
+                            android:textSize="15dp"
+                            android:gravity="right"
+                            android:layout_gravity="center"
+                            android:textAlignment="center"
+                            />
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:id="@+id/driverCar"
+                            android:textColor="@color/textred"
+                            android:textSize="15dp"
+                            android:layout_marginLeft="6dp"
+                            android:gravity="left"
+                            android:layout_gravity="center"/>
+
+                    </LinearLayout>
+
+                    <RatingBar
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/ratingBar"
+                        android:layout_below="@+id/tvcarname"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:numStars="5"
+                        android:stepSize="0.1"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="0dp"
+                        android:clickable="false"
+                        android:focusableInTouchMode="false"
+                        android:focusable="false"
+                        android:isIndicator="true"
+                        android:theme="@style/RatingBar"/>
+
+                </LinearLayout>
+            </FrameLayout>
+
+            <!--Radio Button and Call Button Section-->
+            <LinearLayout
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!--Radio Group Buttons-->
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/radioGroup"
+                    android:gravity="center"
+                    android:background="@color/white"
+                    android:orientation="horizontal">
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="WasX"
+                        android:id="@+id/UberX"/>
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Was2X"
+                        android:id="@+id/UberBlack"/>
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Was2X"
+                        android:id="@+id/UberXl"/>
+                </RadioGroup>
+
+                <!-- Call Button -->
+                <Button
+                    android:id="@+id/request"
+                    style="@style/ButtonOrange"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_margin="@dimen/space15"
+                    android:text="call Waslny" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+</FrameLayout>

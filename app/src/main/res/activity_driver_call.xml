@@ -1,0 +1,237 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context="com.waslnyapp.waslny.driver.CallDriver">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <!--Driver Info Section ( Hidden ) -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="380dp"
+            android:layout_gravity="center"
+
+            >
+            <LinearLayout
+                android:id="@+id/driverInfo"
+                android:layout_width="299dp"
+                android:layout_height="380dp"
+                android:layout_gravity="center"
+                android:background="@drawable/bg"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:id="@+id/txtdriverinfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="49dp"
+                    android:layout_marginTop="30dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/ic_driverinfo" />
+
+                    <com.waslnyapp.waslny.customfonts.MyTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Driver Information"
+                        android:textColor="@color/white"
+                        android:textSize="17dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/profilephoto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtdriverinfo"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/driverProfileImage"
+                        android:layout_width="100sp"
+                        android:layout_height="100sp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:padding="6dp"
+                        android:src="@mipmap/ic_default_user" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/tvusername"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/profilephoto"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <com.waslnyapp.waslny.customfonts.MyTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="0.8"
+                        android:gravity="right"
+                        android:text="DriverName:"
+                        android:textAlignment="center"
+                        android:textColor="@color/text"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/driverName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="6dp"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:text=""
+                        android:textColor="@color/textred"
+                        android:textSize="15dp" />
+
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/div1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/ordernumber"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/div"></View>
+
+                <LinearLayout
+                    android:id="@+id/tvphoneno"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ordernumber"
+                    android:layout_marginTop="3dp"
+                    android:orientation="horizontal">
+
+                    <com.waslnyapp.waslny.customfonts.MyTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="0.8"
+                        android:gravity="right"
+                        android:text="Phone No.:"
+                        android:textAlignment="center"
+                        android:textColor="@color/text"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/driverPhone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="6dp"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:text=""
+                        android:textColor="@color/textred"
+                        android:textSize="15dp" />
+
+
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/div2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/ordernumber2"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/div"></View>
+
+                <LinearLayout
+                    android:id="@+id/tvcarname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/div2"
+                    android:orientation="horizontal">
+
+                    <com.waslnyapp.waslny.customfonts.MyTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="0.8"
+                        android:gravity="right"
+                        android:text="Car Name:"
+                        android:textAlignment="center"
+                        android:textColor="@color/text"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/driverCar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="6dp"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:text=""
+                        android:textColor="@color/textred"
+                        android:textSize="15dp" />
+
+                </LinearLayout>
+
+                <!-- Picked User Button -->
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_alignParentBottom="true"
+                    android:weightSum="2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginTop="35dp"
+                        android:layout_marginBottom="@dimen/space15"
+                        android:layout_marginLeft="@dimen/space15"
+                        android:layout_marginRight="@dimen/space5"
+                        android:text="call by app"
+                        android:id="@+id/callapp"
+                        style="@style/ButtonOrange"/>
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginTop="35dp"
+                        android:layout_marginBottom="@dimen/space15"
+                        android:layout_marginLeft="@dimen/space5"
+                        android:layout_marginRight="@dimen/space15"
+                        android:text="call by phone"
+                        android:id="@+id/callphone"
+                        style="@style/ButtonOrange"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+</FrameLayout>
