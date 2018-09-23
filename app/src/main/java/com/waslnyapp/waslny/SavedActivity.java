@@ -27,12 +27,9 @@ import java.util.Locale;
 public class SavedActivity extends AppCompatActivity {
     private String customerOrDriver, userId;
 
-    private RecyclerView mHistoryRecyclerView;
     private RecyclerView.Adapter mHistoryAdapter;
-    private RecyclerView.LayoutManager mHistoryLayoutManager;
 
     private TextView mBalance;
-    private ImageView Back;
 
     private Double Balance = 0.0;
 
@@ -42,26 +39,24 @@ public class SavedActivity extends AppCompatActivity {
         setContentView(R.layout.activity_saved);
 
         mBalance = findViewById(R.id.balance);
-
-        mHistoryRecyclerView = (RecyclerView) findViewById(R.id.historyRecyclerView);
+        RecyclerView mHistoryRecyclerView = findViewById(R.id.historyRecyclerView);
         mHistoryRecyclerView.setNestedScrollingEnabled(false); //RecyclerView setup
         mHistoryRecyclerView.setHasFixedSize(true);
-        mHistoryLayoutManager = new LinearLayoutManager(SavedActivity.this);
+        RecyclerView.LayoutManager mHistoryLayoutManager = new LinearLayoutManager(SavedActivity.this);
         mHistoryRecyclerView.setLayoutManager(mHistoryLayoutManager);
         mHistoryAdapter = new SavedAdapter(getDataSetHistory(), SavedActivity.this);
         mHistoryRecyclerView.setAdapter(mHistoryAdapter);
-        Back = (ImageView) findViewById(R.id.back);
+        ImageView back = findViewById(R.id.back);
 
-        // reciving data from CustomerMapActivity
+        // receiving data from CustomerMapActivity
         customerOrDriver = getIntent().getExtras().getString("customerOrDriver");
         userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         getUserHistoryIds(); //get rides that user was part of
 
-        Back.setOnClickListener(new View.OnClickListener() {
+        back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
-                return;
             }
         });
 
@@ -98,7 +93,7 @@ public class SavedActivity extends AppCompatActivity {
 
                 if(dataSnapshot.exists()){
                     String rideId = dataSnapshot.getKey(); // get the user key
-                    Long timestamp = 0L; //the time as defult
+                    Long timestamp = 0L; //the time as default
                     String distance = "";
                     String distanation = "";
                     Double ridePrice = 0.0;
@@ -137,8 +132,7 @@ public class SavedActivity extends AppCompatActivity {
     private String getDate(Long time) {
         Calendar cal = Calendar.getInstance(Locale.getDefault());
         cal.setTimeInMillis(time*1000);
-        String date = DateFormat.format("MM-dd-yyyy hh:mm", cal).toString();
-        return date;
+        return DateFormat.format("MM-dd-yyyy hh:mm", cal).toString();
     }
 
     // save SavedObject (rideid and time) in array called resultsHistory 0 = rideid ,  1 = time

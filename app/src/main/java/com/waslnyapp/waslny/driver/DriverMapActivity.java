@@ -153,7 +153,7 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
             }
         });
 
-        btn_RideReject = (Button) findViewById(R.id.reject);
+        btn_RideReject = findViewById(R.id.reject);
         btn_RideReject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

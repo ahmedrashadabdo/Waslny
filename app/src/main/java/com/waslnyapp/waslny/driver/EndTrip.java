@@ -1,7 +1,6 @@
 package com.waslnyapp.waslny.driver;
 
-import android.annotation.SuppressLint;
-import android.app.Dialog;
+
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -14,16 +13,10 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.RatingBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.directions.route.RoutingListener;
-import com.firebase.geofire.GeoFire;
-import com.firebase.geofire.GeoQuery;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
@@ -34,62 +27,53 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.stepstone.apprating.AppRatingDialog;
 import com.stepstone.apprating.listener.RatingDialogListener;
 import com.waslnyapp.waslny.PaymentsActivity;
 import com.waslnyapp.waslny.R;
-import com.waslnyapp.waslny.SavedSingleActivity;
 
 import java.util.Arrays;
-import java.util.HashMap;
 
 public class EndTrip extends FragmentActivity implements OnMapReadyCallback,
         RatingDialogListener {
 
     private GoogleMap Map;
-    private SupportMapFragment mapFragment;
     Location LastLocation;
     LocationRequest LocationClienRequest;
-    private FusedLocationProviderClient mFusedLocationClient;
 
-    private Button btn_pay, btn_rate;
+    // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+
+    private FusedLocationProviderClient mFusedLocationClient ;
+
     String driverId;
     private LatLng destinationLatLng;
 
-    private RatingBar ratingBar;
     private DatabaseReference driverRatingoDb;
-
+    private DatabaseReference historyRideInfoDb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_end_trip);
 
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
-        mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
-
-
+        driverId = getIntent().getExtras().getString("driverFoundID");
         destinationLatLng = new LatLng(0.0,0.0);
         driverRatingoDb = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers");
-        driverId = driverRatingoDb.getKey();
+        //historyRideInfoDb = FirebaseDatabase.getInstance().getReference().child("Rating").child(rideId);
 
-        ratingBar = findViewById(R.id.ratingBar);
+        //RatingBar ratingBar = findViewById(R.id.ratingBar);
 
-        btn_pay = (Button) findViewById(R.id.pay);
-        btn_rate = (Button) findViewById(R.id.rating);
+        Button btn_pay = findViewById(R.id.pay);
+        Button btn_rate = findViewById(R.id.rating);
 
-        // when user click waslny call button
+        // when user click Waslny call button
         btn_pay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,7 +83,7 @@ public class EndTrip extends FragmentActivity implements OnMapReadyCallback,
             }
         });
 
-        //when click Call By Phone Buttin
+        //when click Call By Phone Button
         btn_rate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,10 +92,7 @@ public class EndTrip extends FragmentActivity implements OnMapReadyCallback,
 
             }
         });
-
-
     }
-
 
 
     private void setDriverRating() {
@@ -225,6 +206,7 @@ public class EndTrip extends FragmentActivity implements OnMapReadyCallback,
 
     @Override
     public void onPositiveButtonClicked(int rating, String s) {
+
         driverId = driverRatingoDb.getKey();
         driverRatingoDb.child(driverId).child("rating").setValue(rating);
 

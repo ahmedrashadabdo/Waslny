@@ -58,6 +58,7 @@ import com.waslnyapp.waslny.SavedActivity;
 import com.waslnyapp.waslny.HomeActivity;
 import com.waslnyapp.waslny.R;
 import com.waslnyapp.waslny.driver.CallDriver;
+import com.waslnyapp.waslny.driver.EndTrip;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -71,31 +72,22 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
     Location LastLocation;
     LocationRequest LocationClienRequest;
     private FusedLocationProviderClient mFusedLocationClient;
-
     private FloatingActionMenu menuDown;
     private FloatingActionButton btn_Profile, btn_Saved, btn_Logout;
     private Button btn_CallRequest;
-
     RelativeLayout rlSearchPlace;
-
     private LatLng pickupClientLocation;
     private Boolean requestBol = false;
     private Marker pickupClientMarker;
     private SupportMapFragment mapFragment;
-
     private String destination, requestService,driverid;
     private LatLng destinationLatLng;
-
     private LinearLayout showDriverInfo;
-
     private ImageView DriverProfilePhoto;
-
     private TextView tvDriverName, tvDriverPhone, tvDriverCarName;
     private RadioGroup RadioGroup;
     private RatingBar RatingBar;
-
     DriverInfo driverInfo;
-
     private DatabaseReference DriverReference;
     private FirebaseAuth FirebaseAuth;
 
@@ -106,34 +98,24 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
 
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
-
         mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
         destinationLatLng = new LatLng(0.0,0.0);
-
-        // Driver Info
-        showDriverInfo = (LinearLayout) findViewById(R.id.driverInfo);
-        DriverProfilePhoto = (ImageView) findViewById(R.id.driverProfileImage);
-        tvDriverName = (TextView) findViewById(R.id.driverName);
-        tvDriverPhone = (TextView) findViewById(R.id.driverPhone);
-        tvDriverCarName = (TextView) findViewById(R.id.driverCar);
-        RatingBar = (RatingBar) findViewById(R.id.ratingBar);
-
-        RadioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+        showDriverInfo = findViewById(R.id.driverInfo);
+        DriverProfilePhoto = findViewById(R.id.driverProfileImage);
+        tvDriverName = findViewById(R.id.driverName);
+        tvDriverPhone = findViewById(R.id.driverPhone);
+        tvDriverCarName = findViewById(R.id.driverCar);
+        RatingBar = findViewById(R.id.ratingBar);
+        RadioGroup = findViewById(R.id.radioGroup);
         RadioGroup.check(R.id.UberX);
-
-        menuDown = (FloatingActionMenu) findViewById(R.id.menu_down);
-
-        btn_Profile = (FloatingActionButton) findViewById(R.id.profile);
-        btn_Saved = (FloatingActionButton) findViewById(R.id.saved);
-        btn_Logout = (FloatingActionButton) findViewById(R.id.logout);
-
-        RelativeLayout rlSearchPlace = (RelativeLayout) findViewById(R.id.rlSearchPlacement);
+        menuDown = findViewById(R.id.menu_down);
+        btn_Profile = findViewById(R.id.profile);
+        btn_Saved = findViewById(R.id.saved);
+        btn_Logout = findViewById(R.id.logout);
+        RelativeLayout rlSearchPlace = findViewById(R.id.rlSearchPlacement);
         rlSearchPlace.setVisibility (View.VISIBLE);
-
-
-        btn_CallRequest = (Button) findViewById(R.id.request);
+        btn_CallRequest = findViewById(R.id.request);
 
         btn_Logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -142,7 +124,6 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
                 Intent intent = new Intent(CustomerMapActivity.this, HomeActivity.class);
                 startActivity(intent);
                 finish();
-                return;
             }
         });
 
@@ -174,12 +155,12 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
                 }
             }
         });
+
         btn_Profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CustomerMapActivity.this, CustomerProfile.class);
                 startActivity(intent);
-                return;
             }
         });
 
@@ -189,10 +170,8 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
                 Intent intent = new Intent(CustomerMapActivity.this, SavedActivity.class);
                 intent.putExtra("customerOrDriver", "Customers");
                 startActivity(intent);
-                return;
             }
         });
-
 
         //Place Autocomplete Fragment
         PlaceAutocompleteFragment autocompleteFragment = (PlaceAutocompleteFragment)
@@ -213,10 +192,10 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
         });
 
     }
+
     private int radius = 1;
     private Boolean driverFound = false;
     private String driverFoundID;
-
     GeoQuery geoQuery;
     private void getClosestDriver(){ // to find driver for request
 
@@ -256,6 +235,9 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
                                     getDriverInfo();
                                     getHasRideEnded(); // cancel customer request when the customer click cancel
                                     btn_CallRequest.setText("Looking for Driver Location....");// change call text when click button to Looking for Driver Location
+                                    Intent intent = new Intent(CustomerMapActivity.this, EndTrip.class);
+                                    intent.putExtra("driverFoundID",driverFoundID);
+                                    startActivity(intent);
                                 }
                             }
                         }
@@ -417,6 +399,9 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
                 if(dataSnapshot.exists()){
 
                 }else{
+
+
+
                     endRide(); // cancel customer request when the customer click cancel
                 }
             }
@@ -486,14 +471,15 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
 
         Map.setOnInfoWindowClickListener(this);
 
-        if(android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-            if(ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
-
-            }else{
-                checkLocationPermission();
-            }
-        }
-
+//        if(android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+//            if(ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
+//                checkLocationPermission();
+//
+//            }else{
+//                checkLocationPermission();
+//            }
+//        }
+        checkLocationPermission();
         mFusedLocationClient.requestLocationUpdates(LocationClienRequest, mLocationCallback, Looper.myLooper());
         Map.setMyLocationEnabled(true);
     }
@@ -640,6 +626,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
             Intent intent = new Intent(CustomerMapActivity.this, CallDriver.class);
             intent.putExtra("driverId",marker.getSnippet().toString());
             startActivity(intent);
+
         }
 
     }
@@ -691,6 +678,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
             public void onClick(DialogInterface dialogInterface, int i) {
 
                 Toast.makeText(CustomerMapActivity.this, "Your Trip Has Ended", Toast.LENGTH_LONG).show();
+
             }
         });
 

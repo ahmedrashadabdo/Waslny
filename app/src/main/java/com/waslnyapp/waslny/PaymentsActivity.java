@@ -19,7 +19,7 @@ public class PaymentsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payments);
-        Back = (ImageView) findViewById(R.id.back);
+        Back = findViewById(R.id.back);
 
         Back.setOnClickListener(new View.OnClickListener() {
             @Override

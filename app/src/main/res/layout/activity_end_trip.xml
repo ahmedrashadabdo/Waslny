@@ -48,7 +48,7 @@
                         android:layout_marginLeft="6dp"
                         android:src="@drawable/ic_trip" />
 
-                    <com.waslnyapp.waslny.customfonts.MyTextView
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="26dp"
@@ -68,7 +68,7 @@
                     android:layout_marginTop="30dp"
                     android:orientation="vertical">
 
-                    <com.waslnyapp.waslny.customfonts.MyTextView
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="55dp"
@@ -77,7 +77,7 @@
                         android:text="Total Fare"
                         android:textSize="17dp" />
 
-                    <com.waslnyapp.waslny.customfonts.MyTextView
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="60dp"
