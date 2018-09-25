@@ -132,10 +132,10 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
             @Override
             public void onClick(View v) {
                 if (requestBol){ // if we want to cancel the request
-                    endRide();
+//                    endRide();
                 }else{
                     int selectId = RadioGroup.getCheckedRadioButtonId();
-                    final RadioButton radioButton = (RadioButton) findViewById(selectId);
+                    final RadioButton radioButton = findViewById(selectId);
                     if (radioButton.getText() == null){
                         return;
                     }
@@ -151,7 +151,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
                     pickupClientMarker = Map.addMarker(new MarkerOptions().position(pickupClientLocation).title("Pickup Here").icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_pickup)));
                     btn_CallRequest.setText("Getting your Driver....");
 
-                    getClosestDriver(); // find the closest driver to user
+//                    getClosestDriver(); // find the closest driver to user
                 }
             }
         });
@@ -197,82 +197,82 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
     private Boolean driverFound = false;
     private String driverFoundID;
     GeoQuery geoQuery;
-    private void getClosestDriver(){ // to find driver for request
-
-        DatabaseReference driverLocation = FirebaseDatabase.getInstance().getReference().child("driversAvailable");
-        GeoFire geoFire = new GeoFire(driverLocation);
-        geoQuery = geoFire.queryAtLocation(new GeoLocation(pickupClientLocation.latitude, pickupClientLocation.longitude), radius);
-        geoQuery.removeAllListeners();
-        geoQuery.addGeoQueryEventListener(new GeoQueryEventListener() {
-            // case 1 if driver found
-            @Override
-            public void onKeyEntered(String key, GeoLocation location) {
-                if (!driverFound && requestBol){
-                    DatabaseReference mCustomerDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(key);
-                    mCustomerDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            if (dataSnapshot.exists() && dataSnapshot.getChildrenCount()>0){
-                                Map<String, Object> driverMap = (Map<String, Object>) dataSnapshot.getValue();
-                                if (driverFound){
-                                    return;
-                                }
-
-                                if(driverMap.get("Service").equals(requestService)){
-                                    driverFound = true;
-                                    driverFoundID = dataSnapshot.getKey();
-
-                                    DatabaseReference driverRef = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(driverFoundID).child("customerRequest");
-                                    String customerId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                                    HashMap map = new HashMap();
-                                    map.put("customerRideId", customerId);// put current user id in map
-                                    map.put("Destination", destination); // put the destination request from auto complete place
-                                    map.put("destinationLat", destinationLatLng.latitude);
-                                    map.put("destinationLng", destinationLatLng.longitude);
-                                    driverRef.updateChildren(map);// make change and update in database
-
-                                    getDriverLocation();// display driver location in user map
-                                    getDriverInfo();
-                                    getHasRideEnded(); // cancel customer request when the customer click cancel
-                                    btn_CallRequest.setText("Looking for Driver Location....");// change call text when click button to Looking for Driver Location
-                                    Intent intent = new Intent(CustomerMapActivity.this, EndTrip.class);
-                                    intent.putExtra("driverFoundID",driverFoundID);
-                                    startActivity(intent);
-                                }
-                            }
-                        }
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-                        }
-                    });
-                }
-            }
-
-            @Override
-            public void onKeyExited(String key) {
-
-            }
-
-            @Override
-            public void onKeyMoved(String key, GeoLocation location) {
-
-            }
-            // case 2 if driver not found
-            @Override
-            public void onGeoQueryReady() {
-                if (!driverFound)
-                {
-                    radius++;
-                    getClosestDriver();
-                }
-            }
-
-            @Override
-            public void onGeoQueryError(DatabaseError error) {
-
-            }
-        });
-    }
+//    private void getClosestDriver(){ // to find driver for request
+//
+//        DatabaseReference driverLocation = FirebaseDatabase.getInstance().getReference().child("driversAvailable");
+//        GeoFire geoFire = new GeoFire(driverLocation);
+//        geoQuery = geoFire.queryAtLocation(new GeoLocation(pickupClientLocation.latitude, pickupClientLocation.longitude), radius);
+//        geoQuery.removeAllListeners();
+//        geoQuery.addGeoQueryEventListener(new GeoQueryEventListener() {
+//            // case 1 if driver found
+//            @Override
+//            public void onKeyEntered(String key, GeoLocation location) {
+//                if (!driverFound && requestBol){
+//                    DatabaseReference mCustomerDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(key);
+//                    mCustomerDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+//                        @Override
+//                        public void onDataChange(DataSnapshot dataSnapshot) {
+//                            if (dataSnapshot.exists() && dataSnapshot.getChildrenCount()>0){
+//                                Map<String, Object> driverMap = (Map<String, Object>) dataSnapshot.getValue();
+//                                if (driverFound){
+//                                    return;
+//                                }
+//
+//                                if(driverMap.get("Service").equals(requestService)){
+//                                    driverFound = true;
+//                                    driverFoundID = dataSnapshot.getKey();
+//
+//                                    DatabaseReference driverRef = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(driverFoundID).child("customerRequest");
+//                                    String customerId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+//                                    HashMap map = new HashMap();
+//                                    map.put("customerRideId", customerId);// put current user id in map
+//                                    map.put("Destination", destination); // put the destination request from auto complete place
+//                                    map.put("destinationLat", destinationLatLng.latitude);
+//                                    map.put("destinationLng", destinationLatLng.longitude);
+//                                    driverRef.updateChildren(map);// make change and update in database
+//
+//                                    getDriverLocation();// display driver location in user map
+//                                    getDriverInfo();
+//                                    getHasRideEnded(); // cancel customer request when the customer click cancel
+//                                    btn_CallRequest.setText("Looking for Driver Location....");// change call text when click button to Looking for Driver Location
+//                                    Intent intent = new Intent(CustomerMapActivity.this, EndTrip.class);
+//                                    intent.putExtra("driverFoundID",driverFoundID);
+//                                    startActivity(intent);
+//                                }
+//                            }
+//                        }
+//                        @Override
+//                        public void onCancelled(DatabaseError databaseError) {
+//                        }
+//                    });
+//                }
+//            }
+//
+//            @Override
+//            public void onKeyExited(String key) {
+//
+//            }
+//
+//            @Override
+//            public void onKeyMoved(String key, GeoLocation location) {
+//
+//            }
+//            // case 2 if driver not found
+//            @Override
+//            public void onGeoQueryReady() {
+//                if (!driverFound)
+//                {
+//                    radius++;
+//                    getClosestDriver();
+//                }
+//            }
+//
+//            @Override
+//            public void onGeoQueryError(DatabaseError error) {
+//
+//            }
+//        });
+//    }
 
     /*-------------------------------------------- Map specific functions -----
     |  Function(s) getDriverLocation
@@ -402,7 +402,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
 
 
 
-                    endRide(); // cancel customer request when the customer click cancel
+//                    endRide(); // cancel customer request when the customer click cancel
                 }
             }
 
@@ -412,42 +412,42 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
         });
     }
 
-    private void endRide(){
-        // remove the user request listener so remove user request node from database
-        requestBol = false;
-        geoQuery.removeAllListeners();
-        driverLocationRef.removeEventListener(driverLocationRefListener);
-        driveHasEndedRef.removeEventListener(driveHasEndedRefListener);
-        // remove the user request from drivers node in database
-        if (driverFoundID != null){
-            DatabaseReference driverRef = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(driverFoundID).child("customerRequest");
-            driverRef.removeValue();
-            driverFoundID = null;
-        }
-
-        driverFound = false;
-        radius = 1;
-        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("customerRequest");
-        GeoFire geoFire = new GeoFire(ref);
-        geoFire.removeLocation(userId);
-        // remove the pickup user request
-        if(pickupClientMarker != null){
-            pickupClientMarker.remove();
-        }
-        // remove the Driver Marker in user map
-        if (mDriverMarker != null){
-            mDriverMarker.remove();
-        }
-        btn_CallRequest.setText("Call Waslny");
-        // remove the Driver Marker in user map
-        showDriverInfo.setVisibility(View.GONE);
-        tvDriverName.setText("");
-        tvDriverPhone.setText("");
-        tvDriverCarName.setText("");
-        DriverProfilePhoto.setImageResource(R.mipmap.ic_default_user);
-    }
+//    private void endRide(){
+//        // remove the user request listener so remove user request node from database
+//        requestBol = false;
+//        geoQuery.removeAllListeners();
+//        driverLocationRef.removeEventListener(driverLocationRefListener);
+//        driveHasEndedRef.removeEventListener(driveHasEndedRefListener);
+//        // remove the user request from drivers node in database
+//        if (driverFoundID != null){
+//            DatabaseReference driverRef = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(driverFoundID).child("customerRequest");
+//            driverRef.removeValue();
+//            driverFoundID = null;
+//        }
+//
+//        driverFound = false;
+//        radius = 1;
+//        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+//
+//        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("customerRequest");
+//        GeoFire geoFire = new GeoFire(ref);
+//        geoFire.removeLocation(userId);
+//        // remove the pickup user request
+//        if(pickupClientMarker != null){
+//            pickupClientMarker.remove();
+//        }
+//        // remove the Driver Marker in user map
+//        if (mDriverMarker != null){
+//            mDriverMarker.remove();
+//        }
+//        btn_CallRequest.setText("Call Waslny");
+//        // remove the Driver Marker in user map
+//        showDriverInfo.setVisibility(View.GONE);
+//        tvDriverName.setText("");
+//        tvDriverPhone.setText("");
+//        tvDriverCarName.setText("");
+//        DriverProfilePhoto.setImageResource(R.mipmap.ic_default_user);
+//    }
 
     /*-------------------------------------------- Map specific functions -----
     |  Function(s) onMapReady, buildGoogleApiClient, onLocationChanged, onConnected

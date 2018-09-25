@@ -106,17 +106,17 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
         mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        menuDown = (FloatingActionMenu) findViewById(R.id.menu_down);
+        menuDown = findViewById(R.id.menu_down);
 
-        showCustomerInfo = (LinearLayout) findViewById(R.id.customerInfo);
+        showCustomerInfo = findViewById(R.id.customerInfo);
 
-        CustomerProfilePhoto = (ImageView) findViewById(R.id.customerProfileImage);
+        CustomerProfilePhoto = findViewById(R.id.customerProfileImage);
 
-        tvCustomerName = (TextView) findViewById(R.id.customerName);
-        tvCustomerPhone = (TextView) findViewById(R.id.customerPhone);
-        tvCustomerDestination = (TextView) findViewById(R.id.customerDestination);
+        tvCustomerName = findViewById(R.id.customerName);
+        tvCustomerPhone = findViewById(R.id.customerPhone);
+        tvCustomerDestination = findViewById(R.id.customerDestination);
 
-        DriverWorking = (Switch) findViewById(R.id.workingSwitch);
+        DriverWorking = findViewById(R.id.workingSwitch);
         DriverWorking.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -128,10 +128,10 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
             }
         });
 
-        btn_Profile = (FloatingActionButton) findViewById(R.id.profile);
-        btn_Logout = (FloatingActionButton) findViewById(R.id.logout);
-        btn_Saved = (FloatingActionButton) findViewById(R.id.saved);
-        btn_RideStatus = (Button) findViewById(R.id.rideStatus);
+        btn_Profile = findViewById(R.id.profile);
+        btn_Logout = findViewById(R.id.logout);
+        btn_Saved = findViewById(R.id.saved);
+        btn_RideStatus = findViewById(R.id.rideStatus);
         btn_RideStatus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
