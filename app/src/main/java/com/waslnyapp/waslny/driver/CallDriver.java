@@ -50,7 +50,7 @@ import java.util.List;
 
 public class CallDriver extends FragmentActivity implements OnMapReadyCallback {
 
-    final static String TAG ="CallDriver";
+    private final static String TAG ="CallDriver";
     private GoogleMap Map;
     Location LastLocation;
     LocationRequest LocationClienRequest;
@@ -116,6 +116,7 @@ public class CallDriver extends FragmentActivity implements OnMapReadyCallback {
                 if(driverFoundID != null && !driverFoundID.isEmpty()) {
                     customerRequest(driverFoundID);
                     getDriverLocation();
+                    endRide(driverFoundID);
                 }
             }
         });
@@ -200,7 +201,8 @@ public class CallDriver extends FragmentActivity implements OnMapReadyCallback {
     }
 
     private void getDriverInfo(final String driverFoundID) {
-        DatabaseReference mCustomerDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(driverFoundID);
+        Log.d(TAG,"getDriverInfo");
+        final DatabaseReference mCustomerDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(driverFoundID);
         mCustomerDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -218,6 +220,7 @@ public class CallDriver extends FragmentActivity implements OnMapReadyCallback {
                     if (dataSnapshot.child("ProfilePhotoPath").getValue() != null) {
                         Glide.with(getApplication()).load(dataSnapshot.child("ProfilePhotoPath").getValue().toString()).into(DriverProfilePhoto);
                     }
+                    mCustomerDatabase.removeEventListener(this);
                 }
             }
 
@@ -229,6 +232,8 @@ public class CallDriver extends FragmentActivity implements OnMapReadyCallback {
     }
 
     private void getDriverLocation(){
+        Log.d(TAG,"getDriverLocation");
+
         driverLocationRef = FirebaseDatabase.getInstance().getReference().child("driversWorking").child(driverFoundID).child("l");
         driverLocationRefListener = driverLocationRef.addValueEventListener(new ValueEventListener() {
             Boolean isArrived = false;
@@ -313,6 +318,8 @@ public class CallDriver extends FragmentActivity implements OnMapReadyCallback {
 
     private void DialogTripEnded(){
 
+        Log.d(TAG, "DialogTripEnded");
+
         //Code Snippet For Alert Dialog With Action
         //Set Message and Title
         AlertDialog.Builder builder = new AlertDialog.Builder(CallDriver.this);
@@ -349,15 +356,18 @@ public class CallDriver extends FragmentActivity implements OnMapReadyCallback {
     private DatabaseReference driverLocationRef;
     private ValueEventListener driverLocationRefListener;
     private void endRide(final String driverid){
+        Log.d(TAG, "endRide");
+        Toast.makeText(this, "Your Trip start", Toast.LENGTH_LONG).show();
         // remove the user request listener so remove user request node from database
-        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        DatabaseReference driverRef = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(userId).child("customerRequest");
+//        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        DatabaseReference driverRef = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(driverid).child("customerRequest");
         driverRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if(dataSnapshot.exists()){
             }else {
-                    geoQuery.removeAllListeners();
+                    DialogTripEnded();
+//                    geoQuery.removeAllListeners();
                     driverLocationRef.removeEventListener(driverLocationRefListener);
 //                  driveHasEndedRef.removeEventListener(driveHasEndedRefListener);
                     // remove the user request from drivers node in database

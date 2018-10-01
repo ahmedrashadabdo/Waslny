@@ -31,7 +31,7 @@
                 android:layout_gravity="center"
                 android:background="@drawable/bg"
                 android:orientation="vertical"
-                android:visibility="visible">
+                android:visibility="gone">
 
                 <LinearLayout
                     android:id="@+id/txtdriverinfo"

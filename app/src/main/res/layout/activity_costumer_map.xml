@@ -92,216 +92,461 @@
             android:orientation="vertical"
             android:layout_gravity="bottom">
 
-            <!--Driver Info Section ( Hidden ) -->
+            <!--&lt;!&ndash;Driver Info Section ( Hidden ) &ndash;&gt;-->
+            <!--<FrameLayout-->
+                <!--android:layout_width="299dp"-->
+                <!--android:layout_height="380dp"-->
+                <!--android:layout_gravity="center"-->
+
+                <!--&gt;-->
+                <!--<LinearLayout-->
+                    <!--android:layout_width="299dp"-->
+                    <!--android:layout_height="380dp"-->
+                    <!--android:id="@+id/driverInfo"-->
+                    <!--android:layout_gravity="bottom"-->
+                    <!--android:orientation="vertical"-->
+                    <!--android:background="@drawable/bg"-->
+                    <!--android:visibility="gone"-->
+                    <!--&gt;-->
+                    <!--<LinearLayout-->
+                        <!--android:id="@+id/txtdriverinfo"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:orientation="horizontal"-->
+                        <!--android:layout_marginTop="30dp"-->
+                        <!--android:layout_marginStart="49dp"-->
+                        <!--&gt;-->
+                        <!--<ImageView-->
+                            <!--android:layout_weight="1"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:src="@drawable/ic_driverinfo"-->
+                            <!--/>-->
+                        <!--<TextView-->
+                            <!--android:layout_weight="1"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:text="Driver Information"-->
+                            <!--android:textColor="@color/white"-->
+                            <!--android:textSize="17dp"-->
+                            <!--android:gravity="center"-->
+                            <!--android:layout_marginLeft="16dp"-->
+                            <!--android:layout_marginTop="5dp"-->
+                            <!--/>-->
+                    <!--</LinearLayout>-->
+
+                    <!--<LinearLayout-->
+                        <!--android:id="@+id/profilephoto"-->
+                        <!--android:layout_below="@+id/txtdriverinfo"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:orientation="vertical"-->
+                        <!--android:layout_gravity="center"-->
+                        <!--android:layout_marginTop="10dp"-->
+                        <!--&gt;-->
+                        <!--<ImageView-->
+                            <!--android:layout_width="100sp"-->
+                            <!--android:layout_height="100sp"-->
+                            <!--android:id="@+id/driverProfileImage"-->
+                            <!--android:src="@mipmap/ic_default_user"-->
+                            <!--android:padding="8dp"-->
+                            <!--android:gravity="center"-->
+                            <!--android:layout_gravity="center"/>-->
+                    <!--</LinearLayout>-->
+
+                    <!--<LinearLayout-->
+                        <!--android:id="@+id/tvusername"-->
+                        <!--android:layout_below="@+id/profilephoto"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:orientation="horizontal"-->
+                        <!--android:layout_marginTop="10dp"-->
+                        <!--&gt;-->
+
+                        <!--<TextView-->
+                            <!--android:layout_weight="0.8"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:text="DriverName:"-->
+                            <!--android:textColor="@color/text"-->
+                            <!--android:textSize="15dp"-->
+                            <!--android:gravity="right"-->
+                            <!--android:layout_gravity="center"-->
+                            <!--android:textAlignment="center"-->
+                            <!--/>-->
+                        <!--<TextView-->
+                            <!--android:layout_weight="1"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:text=""-->
+                            <!--android:id="@+id/driverName"-->
+                            <!--android:textColor="@color/textred"-->
+                            <!--android:textSize="15dp"-->
+                            <!--android:layout_marginLeft="6dp"-->
+                            <!--android:gravity="left"-->
+                            <!--android:layout_gravity="center"/>-->
+
+                    <!--</LinearLayout>-->
+
+                    <!--<View-->
+                        <!--android:id="@+id/div1"-->
+                        <!--android:layout_below="@+id/ordernumber"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="1dp"-->
+                        <!--android:background="@color/div"-->
+                        <!--android:layout_marginTop="8dp"-->
+                        <!--android:layout_marginBottom="3dp"-->
+                        <!--android:layout_marginLeft="16dp"-->
+                        <!--android:layout_marginRight="16dp"-->
+                        <!--&gt;</View>-->
+
+                    <!--<LinearLayout-->
+                        <!--android:id="@+id/tvphoneno"-->
+                        <!--android:layout_below="@+id/ordernumber"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:orientation="horizontal"-->
+                        <!--android:layout_marginTop="3dp"-->
+                        <!--&gt;-->
+
+                        <!--<TextView-->
+                            <!--android:layout_weight="0.8"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:text="Phone No.:"-->
+                            <!--android:textColor="@color/text"-->
+                            <!--android:textSize="15dp"-->
+                            <!--android:gravity="right"-->
+                            <!--android:layout_gravity="center"-->
+                            <!--android:textAlignment="center"-->
+                            <!--/>-->
+
+                        <!--<TextView-->
+                            <!--android:layout_weight="1"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:text=""-->
+                            <!--android:id="@+id/driverPhone"-->
+                            <!--android:textColor="@color/textred"-->
+                            <!--android:textSize="15dp"-->
+                            <!--android:layout_marginLeft="6dp"-->
+                            <!--android:gravity="left"-->
+                            <!--android:layout_gravity="center"/>-->
+
+
+                    <!--</LinearLayout>-->
+
+                    <!--<View-->
+                        <!--android:id="@+id/div2"-->
+                        <!--android:layout_below="@+id/ordernumber2"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="1dp"-->
+                        <!--android:background="@color/div"-->
+                        <!--android:layout_marginTop="8dp"-->
+                        <!--android:layout_marginBottom="3dp"-->
+                        <!--android:layout_marginLeft="16dp"-->
+                        <!--android:layout_marginRight="16dp"-->
+                        <!--&gt;</View>-->
+
+                    <!--<LinearLayout-->
+                        <!--android:id="@+id/tvcarname"-->
+                        <!--android:layout_below="@+id/div2"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:orientation="horizontal"-->
+                        <!--&gt;-->
+
+                        <!--<TextView-->
+                            <!--android:layout_weight="0.8"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:text="Car Name:"-->
+                            <!--android:textColor="@color/text"-->
+                            <!--android:textSize="15dp"-->
+                            <!--android:gravity="right"-->
+                            <!--android:layout_gravity="center"-->
+                            <!--android:textAlignment="center"-->
+                            <!--/>-->
+
+                        <!--<TextView-->
+                            <!--android:layout_weight="1"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:text=""-->
+                            <!--android:id="@+id/driverCar"-->
+                            <!--android:textColor="@color/textred"-->
+                            <!--android:textSize="15dp"-->
+                            <!--android:layout_marginLeft="6dp"-->
+                            <!--android:gravity="left"-->
+                            <!--android:layout_gravity="center"/>-->
+
+                    <!--</LinearLayout>-->
+
+                    <!--<RatingBar-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:id="@+id/ratingBar"-->
+                        <!--android:layout_below="@+id/tvcarname"-->
+                        <!--android:layout_gravity="center"-->
+                        <!--android:gravity="center"-->
+                        <!--android:numStars="5"-->
+                        <!--android:stepSize="0.1"-->
+                        <!--android:layout_marginTop="20dp"-->
+                        <!--android:layout_marginBottom="0dp"-->
+                        <!--android:clickable="false"-->
+                        <!--android:focusableInTouchMode="false"-->
+                        <!--android:focusable="false"-->
+                        <!--android:isIndicator="true"-->
+                        <!--android:theme="@style/RatingBar"/>-->
+
+                <!--</LinearLayout>-->
+            <!--</FrameLayout>-->
             <FrameLayout
-                android:layout_width="299dp"
+                android:layout_width="match_parent"
                 android:layout_height="380dp"
                 android:layout_gravity="center"
 
                 >
                 <LinearLayout
+                    android:id="@+id/driverInfo"
                     android:layout_width="299dp"
                     android:layout_height="380dp"
-                    android:id="@+id/driverInfo"
-                    android:layout_gravity="bottom"
-                    android:orientation="vertical"
+                    android:layout_gravity="center"
                     android:background="@drawable/bg"
-                    android:visibility="gone"
-                    >
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
                     <LinearLayout
                         android:id="@+id/txtdriverinfo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginTop="30dp"
                         android:layout_marginStart="49dp"
-                        >
+                        android:layout_marginTop="30dp"
+                        android:orientation="horizontal">
+
                         <ImageView
-                            android:layout_weight="1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/ic_driverinfo"
-                            />
+                            android:layout_weight="1"
+                            android:src="@drawable/ic_driverinfo" />
+
                         <TextView
-                            android:layout_weight="1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
                             android:text="Driver Information"
                             android:textColor="@color/white"
-                            android:textSize="17dp"
-                            android:gravity="center"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="5dp"
-                            />
+                            android:textSize="17sp" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/profilephoto"
-                        android:layout_below="@+id/txtdriverinfo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
+                        android:layout_below="@+id/txtdriverinfo"
                         android:layout_gravity="center"
                         android:layout_marginTop="10dp"
-                        >
+                        android:orientation="vertical">
+
                         <ImageView
+                            android:id="@+id/driverProfileImage"
                             android:layout_width="100sp"
                             android:layout_height="100sp"
-                            android:id="@+id/driverProfileImage"
-                            android:src="@mipmap/ic_default_user"
-                            android:padding="8dp"
+                            android:layout_gravity="center"
                             android:gravity="center"
-                            android:layout_gravity="center"/>
+                            android:padding="6dp"
+                            android:src="@mipmap/ic_default_user" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/tvusername"
-                        android:layout_below="@+id/profilephoto"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
+                        android:layout_below="@+id/profilephoto"
                         android:layout_marginTop="10dp"
-                        >
+                        android:orientation="horizontal">
+
+                        <!--<com.waslnyapp.waslny.customfonts.MyTextView-->
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.8"
+                            android:gravity="right"
+                            android:text="DriverName:"
+                            android:textAlignment="center"
+                            android:textColor="@color/text"
+                            android:textSize="15sp" />
 
                         <TextView
-                            android:layout_weight="0.8"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="DriverName:"
-                            android:textColor="@color/text"
-                            android:textSize="15dp"
-                            android:gravity="right"
-                            android:layout_gravity="center"
-                            android:textAlignment="center"
-                            />
-                        <TextView
-                            android:layout_weight="1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text=""
                             android:id="@+id/driverName"
-                            android:textColor="@color/textred"
-                            android:textSize="15dp"
-                            android:layout_marginLeft="6dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="6dp"
+                            android:layout_weight="1"
                             android:gravity="left"
-                            android:layout_gravity="center"/>
+                            android:text=""
+                            android:textColor="@color/textred"
+                            android:textSize="15sp" />
 
                     </LinearLayout>
 
                     <View
                         android:id="@+id/div1"
-                        android:layout_below="@+id/ordernumber"
                         android:layout_width="wrap_content"
                         android:layout_height="1dp"
-                        android:background="@color/div"
-                        android:layout_marginTop="8dp"
+                        android:layout_below="@+id/ordernumber"
                         android:layout_marginBottom="3dp"
                         android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
-                        ></View>
+                        android:layout_marginTop="8dp"
+                        android:background="@color/div"></View>
 
                     <LinearLayout
                         android:id="@+id/tvphoneno"
-                        android:layout_below="@+id/ordernumber"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
+                        android:layout_below="@+id/ordernumber"
                         android:layout_marginTop="3dp"
-                        >
+                        android:orientation="horizontal">
 
                         <TextView
-                            android:layout_weight="0.8"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Phone No.:"
-                            android:textColor="@color/text"
-                            android:textSize="15dp"
-                            android:gravity="right"
                             android:layout_gravity="center"
+                            android:layout_weight="0.8"
+                            android:gravity="right"
+                            android:text="Phone No.:"
                             android:textAlignment="center"
-                            />
+                            android:textColor="@color/text"
+                            android:textSize="15sp" />
 
                         <TextView
-                            android:layout_weight="1"
+                            android:id="@+id/driverPhone"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text=""
-                            android:id="@+id/driverPhone"
-                            android:textColor="@color/textred"
-                            android:textSize="15dp"
-                            android:layout_marginLeft="6dp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="6dp"
+                            android:layout_weight="1"
                             android:gravity="left"
-                            android:layout_gravity="center"/>
+                            android:text=""
+                            android:textColor="@color/textred"
+                            android:textSize="15sp" />
 
 
                     </LinearLayout>
 
                     <View
                         android:id="@+id/div2"
-                        android:layout_below="@+id/ordernumber2"
                         android:layout_width="wrap_content"
                         android:layout_height="1dp"
-                        android:background="@color/div"
-                        android:layout_marginTop="8dp"
+                        android:layout_below="@+id/ordernumber2"
                         android:layout_marginBottom="3dp"
                         android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
-                        ></View>
+                        android:layout_marginTop="8dp"
+                        android:background="@color/div"></View>
 
                     <LinearLayout
                         android:id="@+id/tvcarname"
-                        android:layout_below="@+id/div2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        >
+                        android:layout_below="@+id/div2"
+                        android:orientation="horizontal">
 
+                        <!--<com.waslnyapp.waslny.customfonts.MyTextView-->
                         <TextView
-                            android:layout_weight="0.8"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Car Name:"
-                            android:textColor="@color/text"
-                            android:textSize="15dp"
-                            android:gravity="right"
                             android:layout_gravity="center"
+                            android:layout_weight="0.8"
+                            android:gravity="right"
+                            android:text="Car Name:"
                             android:textAlignment="center"
-                            />
+                            android:textColor="@color/text"
+                            android:textSize="15sp" />
 
                         <TextView
-                            android:layout_weight="1"
+                            android:id="@+id/driverCar"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text=""
-                            android:id="@+id/driverCar"
-                            android:textColor="@color/textred"
-                            android:textSize="15dp"
-                            android:layout_marginLeft="6dp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="6dp"
+                            android:layout_weight="1"
                             android:gravity="left"
-                            android:layout_gravity="center"/>
+                            android:text=""
+                            android:textColor="@color/textred"
+                            android:textSize="15sp" />
 
                     </LinearLayout>
 
-                    <RatingBar
+                    <!-- Picked User Button -->
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_alignParentBottom="true"
+                        android:weightSum="2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginTop="35dp"
+                            android:layout_marginBottom="@dimen/space15"
+                            android:layout_marginStart="@dimen/space15"
+                            android:layout_marginEnd="@dimen/space5"
+                            android:text="call by app"
+                            android:id="@+id/callapp"
+                            style="@style/ButtonOrange"/>
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginTop="35dp"
+                            android:layout_marginBottom="@dimen/space15"
+                            android:layout_marginStart="@dimen/space15"
+                            android:layout_marginEnd="@dimen/space5"
+                            android:text="cancel call"
+                            android:id="@+id/cancelreq"
+                            style="@style/ButtonOrange"
+                            android:visibility="gone"/>
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginTop="35dp"
+                            android:layout_marginBottom="@dimen/space15"
+                            android:layout_marginStart="@dimen/space5"
+                            android:layout_marginEnd="@dimen/space15"
+                            android:text="call by phone"
+                            android:id="@+id/callphone"
+                            style="@style/ButtonOrange"/>
+
+                    </LinearLayout>
+
+                    <!--<RatingBar
+                        android:id="@+id/ratingBar"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/ratingBar"
                         android:layout_below="@+id/tvcarname"
                         android:layout_gravity="center"
+                        android:layout_marginBottom="0dp"
+                        android:layout_marginTop="20dp"
                         android:gravity="center"
                         android:numStars="5"
                         android:stepSize="0.1"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginBottom="0dp"
-                        android:clickable="false"
-                        android:focusableInTouchMode="false"
-                        android:focusable="false"
-                        android:isIndicator="true"
-                        android:theme="@style/RatingBar"/>
+                        android:theme="@style/RatingBar" />-->
 
                 </LinearLayout>
-            </FrameLayout>
 
+            </FrameLayout>
             <!--Radio Button and Call Button Section-->
             <LinearLayout
                 android:background="@color/white"
