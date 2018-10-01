@@ -17,7 +17,7 @@
         android:layout_gravity="center"
         android:orientation="vertical">
 
-        <!--Driver Info Section ( Hidden ) -->
+        <!--End Trip Section ( Hidden ) -->
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="380dp"

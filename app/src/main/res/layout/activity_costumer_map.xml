@@ -301,6 +301,130 @@
 
                 <!--</LinearLayout>-->
             <!--</FrameLayout>-->
+            <!--End Trip Section ( Hidden ) -->
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+
+                >
+                <LinearLayout
+                    android:id="@+id/endtrip"
+                    android:layout_width="299dp"
+                    android:layout_height="380dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/bg2"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:id="@+id/endtripinfo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="49dp"
+                        android:layout_marginTop="30dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginLeft="6dp"
+                            android:src="@drawable/ic_trip" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="26dp"
+                            android:layout_marginTop="3dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="Trip Details"
+                            android:textColor="@color/white"
+                            android:textSize="17dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="49dp"
+                        android:layout_marginTop="30dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="55dp"
+                            android:layout_marginBottom="@dimen/space10"
+                            android:gravity="center"
+                            android:text="Total Fare"
+                            android:textSize="17dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="60dp"
+                            android:textColor="#000000"
+                            android:gravity="center"
+                            android:text="1500 RY"
+                            android:textSize="17dp" />
+                    </LinearLayout>
+
+
+                    <!-- pay and rate user Button -->
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_alignParentBottom="true"
+                        android:weightSum="2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space10">
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginTop="35dp"
+                            android:layout_marginBottom="@dimen/space15"
+                            android:layout_marginLeft="@dimen/space15"
+                            android:layout_marginRight="@dimen/space5"
+                            android:text="pay now"
+                            android:id="@+id/pay"
+                            style="@style/ButtonOrange"/>
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginTop="35dp"
+                            android:layout_marginBottom="@dimen/space15"
+                            android:layout_marginLeft="@dimen/space5"
+                            android:layout_marginRight="@dimen/space15"
+                            android:text="rate now"
+                            android:id="@+id/rating"
+                            style="@style/ButtonOrange"/>
+
+                    </LinearLayout>
+
+
+                    <!--<RatingBar
+                        android:id="@+id/ratingBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tvcarname"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="0dp"
+                        android:layout_marginTop="20dp"
+                        android:gravity="center"
+                        android:numStars="5"
+                        android:stepSize="0.1"
+                        android:theme="@style/RatingBar" />-->
+
+                </LinearLayout>
+
+            </FrameLayout>
+
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="380dp"
@@ -566,6 +690,7 @@
                 </LinearLayout>
 
             </FrameLayout>
+
             <!--Radio Button and Call Button Section-->
             <LinearLayout
                 android:background="@color/white"
