@@ -484,6 +484,25 @@
 
                     </LinearLayout>
 
+
+                    <RatingBar
+                        android:id="@+id/ratingBar"
+                        style="?android:attr/ratingBarStyleSmall"
+                        android:layout_width="141dp"
+                        android:layout_height="21dp"
+                        android:layout_below="@+id/tvcarname"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="0dp"
+                        android:layout_marginTop="10dp"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:gravity="center"
+                        android:isIndicator="true"
+                        android:numStars="5"
+                        android:stepSize="0.1"
+                        android:theme="@style/RatingBar" />
+
                     <!-- Picked User Button -->
                     <LinearLayout
                         android:orientation="horizontal"
@@ -575,7 +594,7 @@
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Was2X"
+                        android:text="Was3X"
                         android:id="@+id/UberXl"/>
                 </RadioGroup>
 
@@ -587,7 +606,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
                     android:layout_margin="@dimen/space15"
-                    android:text="call Waslny" />
+                    android:text="call Wasselny" />
 
             </LinearLayout>
 

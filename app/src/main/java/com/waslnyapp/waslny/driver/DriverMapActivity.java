@@ -953,7 +953,7 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
 
 
     private void endRide(){
-        btn_RideStatus.setText("picked customer"); // when customer picked to driver , the driver picked customer
+        btn_RideStatus.setText("picked passenger"); // when customer picked to driver , the driver picked customer
         erasePolylines();
 
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();

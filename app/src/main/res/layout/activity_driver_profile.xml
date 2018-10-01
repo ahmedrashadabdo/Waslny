@@ -148,7 +148,7 @@
         android:layout_marginBottom="@dimen/space10"
         android:layout_marginTop="20dp"
         android:text="save"
-        android:background="@drawable/roundedbutton"
+        android:background="@drawable/btn_orange"
         />
 
 </LinearLayout>

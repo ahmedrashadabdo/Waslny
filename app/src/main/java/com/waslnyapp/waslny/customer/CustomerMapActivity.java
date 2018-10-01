@@ -495,7 +495,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
         if (mDriverMarker != null){
             mDriverMarker.remove();
         }
-        btn_CallRequest.setText("Call Waslny");
+        btn_CallRequest.setText("Call Wasselny");
         // remove the Driver Marker in user map
         showDriverInfo.setVisibility(View.GONE);
         tvDriverName.setText("");
@@ -771,9 +771,6 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
 
         });
     }
-
-
-
 
     private void DialogDriverArrived(){
 

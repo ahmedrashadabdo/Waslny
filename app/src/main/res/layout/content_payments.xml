@@ -48,7 +48,7 @@
                     android:scaleType="fitXY"
                     app:srcCompat="@drawable/ic_paypal" />
 
-                <com.waslnyapp.waslny.customfonts.MyTextView
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -72,7 +72,7 @@
                     android:scaleType="fitXY"
                     app:srcCompat="@drawable/ic_cac" />
 
-                <com.waslnyapp.waslny.customfonts.MyTextView
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -96,7 +96,7 @@
                     android:scaleType="fitXY"
                     app:srcCompat="@drawable/kg" />
 
-                <com.waslnyapp.waslny.customfonts.MyTextView
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -120,7 +120,7 @@
                     android:scaleType="fitXY"
                     android:src="@drawable/money1" />
 
-                <com.waslnyapp.waslny.customfonts.MyTextView
+                <TextView
                     android:id="@+id/myTextView2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
