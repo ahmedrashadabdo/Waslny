@@ -52,7 +52,7 @@
                         android:src="@drawable/ic_history"
                         />
 
-                    <com.waslnyapp.waslny.customfonts.MyTextView
+                    <TextView
                         android:layout_weight="1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -96,7 +96,7 @@
                     android:layout_marginTop="@dimen/space5"
                     >
 
-                    <com.waslnyapp.waslny.customfonts.MyTextView
+                    <TextView
                         android:layout_weight="0.8"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -142,7 +142,7 @@
                     android:layout_marginTop="2dp"
                     >
 
-                    <com.waslnyapp.waslny.customfonts.MyTextView
+                    <TextView
                         android:layout_weight="0.8"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -189,7 +189,7 @@
                     android:layout_marginTop="2dp"
                     >
 
-                    <com.waslnyapp.waslny.customfonts.MyTextView
+                    <TextView
                         android:layout_weight="0.8"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -235,7 +235,7 @@
                     android:layout_marginTop="2dp"
                     >
 
-                    <com.waslnyapp.waslny.customfonts.MyTextView
+                    <TextView
                         android:layout_weight="0.8"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -281,7 +281,7 @@
                     android:layout_marginTop="2dp"
                     >
 
-                    <com.waslnyapp.waslny.customfonts.MyTextView
+                    <TextView
                         android:layout_weight="0.8"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -306,16 +306,6 @@
                         android:layout_gravity="center"/>
                 </LinearLayout>
 
-                <!--<RatingBar
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/ratingBar"
-                    android:layout_gravity="center"
-                    android:numStars="5"
-                    android:stepSize="1"
-                    android:layout_marginTop="@dimen/space10"
-                    android:visibility="gone"/>-->
-
                 <RatingBar
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -323,103 +313,17 @@
                     android:layout_gravity="center"
                     android:numStars="5"
                     android:stepSize="1"
-                    android:layout_marginTop="@dimen/space5"
+                    android:layout_marginTop="@dimen/space10"
                     android:clickable="false"
                     android:focusableInTouchMode="false"
                     android:focusable="false"
                     android:isIndicator="true"
                     android:visibility="visible"/>
 
-               <!-- <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/pay"
-                    android:text="Pay Here"
-                    android:visibility="visible"
-                    android:enabled="false"
-                    android:layout_marginRight="25dp"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginTop="@dimen/space5"
-                    android:layout_marginBottom="@dimen/space5"
-                    style="@style/ButtonOrange"/>-->
 
             </LinearLayout>
         </FrameLayout>
 
-       <!-- LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20sp"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="From - To"
-                android:layout_marginBottom="20sp"
-                android:id="@+id/rideLocation"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="distance"
-                android:layout_marginBottom="20sp"
-                android:id="@+id/rideDistance"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="date"
-                android:layout_marginBottom="20sp"
-                android:id="@+id/rideDate"/>
-        </LinearLayout>-->
-
-        <!--<LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:id="@+id/userImage"
-                android:src="@mipmap/ic_default_user"/>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="20sp">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="name"
-                    android:layout_marginBottom="20sp"
-                    android:id="@+id/userName"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="phone"
-                    android:layout_marginBottom="20sp"
-                    android:id="@+id/userPhone"/>
-            </LinearLayout>
-        </LinearLayout>-->
-
-        <!--<RatingBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/ratingBar"
-            android:layout_gravity="center"
-            android:numStars="5"
-            android:stepSize="1"
-            android:clickable="false"
-android:focusableInTouchMode="false"
-android:focusable="false"
-            android:visibility="visible"/>
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/pay"
-            android:text="Pay Here"
-            android:visibility="visible"
-            android:enabled="false"/>-->
     </LinearLayout>
 
 </android.support.v4.widget.NestedScrollView>
