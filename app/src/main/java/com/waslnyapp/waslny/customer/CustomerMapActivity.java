@@ -68,6 +68,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class CustomerMapActivity extends FragmentActivity implements OnMapReadyCallback,
         GoogleMap.OnInfoWindowClickListener, RatingDialogListener {
@@ -661,7 +662,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
     private void getDriversAround(){
         Log.d(TAG, "getDriversAround");
         Map.clear();
-        markers.clear();
+//        markers.clear();
         getDriversAroundStarted = true;
         DatabaseReference driverLocation = FirebaseDatabase.getInstance().getReference().child("driversAvailable");
         GeoFire geoFire = new GeoFire(driverLocation);
@@ -673,7 +674,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
                 Log.d(TAG, "getDriversAround onKeyEntered");
 
                 for(Marker markerIt : markers){
-                    if(markerIt.getTag().equals(key))
+                    if(Objects.equals(markerIt.getTag(), key))
                         return;
                 }
                 //get marker location not change in green color
@@ -940,10 +941,11 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
         DatabaseReference driverRefCopy = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(DID);
         String requestId = driverRefCopy.child("requestId").toString();
         String id = requestId.substring(1,requestId.length()-1);
-        DatabaseReference historyRef = FirebaseDatabase.getInstance().getReference().child("Saved").child(id);
-
-        historyRef.child("rating").setValue(i);
-//        DatabaseReference historyRideInfoDb;
+        Log.d(TAG,"onPositiveButtonClicked requestId=("+id+ ")");
+//        DatabaseReference historyRef = FirebaseDatabase.getInstance().getReference().child("Saved").child(id);
+//        historyRef.child("rating").setValue(i);
+//
+// DatabaseReference historyRideInfoDb;
 //        historyRideInfoDb = FirebaseDatabase.getInstance().getReference().child("Saved");
 //        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
