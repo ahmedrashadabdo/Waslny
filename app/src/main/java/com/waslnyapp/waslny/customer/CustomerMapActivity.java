@@ -555,7 +555,6 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
         LocationClienRequest.setFastestInterval(1000);
         LocationClienRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
         Map.setOnInfoWindowClickListener(this);
-
         if(android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
             if(ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
 
@@ -938,10 +937,31 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
 
     @Override
     public void onPositiveButtonClicked(int i, String s) {
-        DatabaseReference driverRefCopy = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(DID);
-        String requestId = driverRefCopy.child("requestId").toString();
-        String id = requestId.substring(1,requestId.length()-1);
-        Log.d(TAG,"onPositiveButtonClicked requestId=("+id+ ")");
+        DatabaseReference driverRefCopy = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(DID).child("requestId");
+        final int rat =i;
+        driverRefCopy.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String v = dataSnapshot.getValue().toString();
+                String requestId = v.substring(1,21);
+                Log.d(TAG,"onPositiveButtonClicked requestId=("+requestId+ ")");
+                DatabaseReference historyRef = FirebaseDatabase.getInstance().getReference().child("Saved");
+//                historyRef.updateChildren("rating").setValue(rat);
+                HashMap map = new HashMap();
+                map.put("rating", rat);
+                historyRef.child(requestId).updateChildren(map);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+//        String requestId = driverRefCopy.child("requestId").toString();
+//        String id = requestId.substring(1,requestId.length());
+//        Log.d(TAG,"onPositiveButtonClicked requestId=("+id+ ")");
+
+
 //        DatabaseReference historyRef = FirebaseDatabase.getInstance().getReference().child("Saved").child(id);
 //        historyRef.child("rating").setValue(i);
 //

@@ -990,6 +990,7 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
         DatabaseReference driverRefCopy = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(userId);
 
         driverRef.child(requestId).setValue(true);
+        driverRefCopy.child("requestId").removeValue();
         driverRefCopy.child("requestId").child(requestId).setValue(requestId);
         customerRef.child(requestId).setValue(true);
 
