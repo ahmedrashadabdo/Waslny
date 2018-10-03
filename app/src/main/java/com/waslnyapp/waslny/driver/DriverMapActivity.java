@@ -758,7 +758,7 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
             }
         });
 
-        btn_RideReject = (Button) findViewById(R.id.reject);
+        btn_RideReject = findViewById(R.id.reject);
         btn_RideReject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -824,6 +824,7 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
     private void getAssignedCustomer(){
         String driverId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         DatabaseReference assignedCustomerRef = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(driverId).child("customerRequest").child("customerRideId");
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(driverId).child("customerRequest");
         assignedCustomerRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -980,12 +981,17 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
     }
 
     private void recordRide(){
+
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         DatabaseReference driverRef = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(userId).child("Saved");
         DatabaseReference customerRef = FirebaseDatabase.getInstance().getReference().child("Users").child("Customers").child(customerId).child("Saved");
         DatabaseReference historyRef = FirebaseDatabase.getInstance().getReference().child("Saved");
         String requestId = historyRef.push().getKey();
+        DatabaseReference driverRefCopy = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(userId);
+
         driverRef.child(requestId).setValue(true);
+        driverRefCopy.child("requestId").removeValue();
+        driverRefCopy.child("requestId").child(requestId).setValue(requestId);
         customerRef.child(requestId).setValue(true);
 
         HashMap map = new HashMap();
