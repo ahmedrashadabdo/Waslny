@@ -685,6 +685,7 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
     private int status = 0;
 
     private String customerId = "", destination;
+    String userId ;
     private LatLng destinationLatLng, pickupLatLng;
     private float rideDistance;
 
@@ -704,24 +705,24 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
         setContentView(R.layout.activity_driver_map);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         polylines = new ArrayList<>();
-
+        userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
         mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        menuDown = (FloatingActionMenu) findViewById(R.id.menu_down);
+        menuDown = findViewById(R.id.menu_down);
 
-        showCustomerInfo = (LinearLayout) findViewById(R.id.customerInfo);
+        showCustomerInfo = findViewById(R.id.customerInfo);
 
-        CustomerProfilePhoto = (ImageView) findViewById(R.id.customerProfileImage);
+        CustomerProfilePhoto = findViewById(R.id.customerProfileImage);
 
-        tvCustomerName = (TextView) findViewById(R.id.customerName);
-        tvCustomerPhone = (TextView) findViewById(R.id.customerPhone);
-        tvCustomerDestination = (TextView) findViewById(R.id.customerDestination);
+        tvCustomerName = findViewById(R.id.customerName);
+        tvCustomerPhone = findViewById(R.id.customerPhone);
+        tvCustomerDestination = findViewById(R.id.customerDestination);
 
-        DriverWorking = (Switch) findViewById(R.id.workingSwitch);
+        DriverWorking = findViewById(R.id.workingSwitch);
         DriverWorking.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -733,10 +734,10 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
             }
         });
 
-        btn_Profile = (FloatingActionButton) findViewById(R.id.profile);
-        btn_Logout = (FloatingActionButton) findViewById(R.id.logout);
-        btn_Saved = (FloatingActionButton) findViewById(R.id.saved);
-        btn_RideStatus = (Button) findViewById(R.id.rideStatus);
+        btn_Profile = findViewById(R.id.profile);
+        btn_Logout = findViewById(R.id.logout);
+        btn_Saved = findViewById(R.id.saved);
+        btn_RideStatus = findViewById(R.id.rideStatus);
         btn_RideStatus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -747,6 +748,9 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
                         if(destinationLatLng.latitude!=0.0 && destinationLatLng.longitude!=0.0){
                             getRouteToMarker(destinationLatLng);
                         }
+
+                        DatabaseReference driverRefCopy = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(userId);
+                        driverRefCopy.child("Picked").setValue("true");
                         btn_RideStatus.setText("Drive Completed");
 
                         break;
@@ -763,9 +767,11 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
             @Override
             public void onClick(View v) {
 
-                String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+//                userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
                 DatabaseReference driverRef = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(userId).child("customerRequest");
                 driverRef.removeValue();
+                DatabaseReference driverRefCopy = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(userId);
+                driverRefCopy.child("Picked").removeValue();
 
                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference("customerRequest");
                 GeoFire geoFire = new GeoFire(ref);
@@ -798,7 +804,6 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
                 Intent intent = new Intent(DriverMapActivity.this, HomeActivity.class);
                 startActivity(intent);
                 finish();
-                return;
             }
         });
         btn_Profile.setOnClickListener(new View.OnClickListener() {
@@ -806,7 +811,6 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
             public void onClick(View v) {
                 Intent intent = new Intent(DriverMapActivity.this, DriverProfile.class);
                 startActivity(intent);
-                return;
             }
         });
         btn_Saved.setOnClickListener(new View.OnClickListener() {
@@ -815,7 +819,6 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
                 Intent intent = new Intent(DriverMapActivity.this, SavedActivity.class);
                 intent.putExtra("customerOrDriver", "Drivers");
                 startActivity(intent);
-                return;
             }
         });
         getAssignedCustomer();
@@ -824,7 +827,6 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
     private void getAssignedCustomer(){
         String driverId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         DatabaseReference assignedCustomerRef = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(driverId).child("customerRequest").child("customerRideId");
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(driverId).child("customerRequest");
         assignedCustomerRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
