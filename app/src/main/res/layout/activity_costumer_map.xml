@@ -405,8 +405,21 @@
                             android:id="@+id/rating"
                             style="@style/ButtonOrange"/>
 
+
                     </LinearLayout>
 
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginTop="35dp"
+                        android:layout_marginBottom="@dimen/space15"
+                        android:layout_marginLeft="@dimen/space5"
+                        android:layout_marginRight="@dimen/space15"
+                        android:text="EXIT"
+                        android:id="@+id/end"
+                        style="@style/ButtonOrange"/>
 
                     <!--<RatingBar
                         android:id="@+id/ratingBar"

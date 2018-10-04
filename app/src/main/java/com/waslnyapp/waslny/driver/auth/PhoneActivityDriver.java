@@ -51,7 +51,7 @@ public class PhoneActivityDriver extends AppCompatActivity {
     private String mVerificationId;
     private PhoneAuthProvider.ForceResendingToken mResendToken;
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
-    private FirebaseAuth mAuth;
+    private FirebaseAuth mAuth ;
     private FirebaseAuth.AuthStateListener firebaseAuthListener;
     private CountryCodePicker ccp;
     private LinearLayout loadingProgress;
@@ -63,6 +63,7 @@ public class PhoneActivityDriver extends AppCompatActivity {
     private Button resendCode;
     private Pinview smsCode;
     private String phone;
+
 
 
     @Override
