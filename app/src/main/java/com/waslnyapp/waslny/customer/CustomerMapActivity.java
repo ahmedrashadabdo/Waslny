@@ -730,13 +730,13 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
             @Override
             public void onKeyMoved(String key, GeoLocation location) {
                 Log.d(TAG, "getDriversAround onKeyMoved");
-
-                for(Marker markerIt : markers){
-                    if(markerIt.getTag().equals(key)){
-                        //update marker location in yellow color
-                        markerIt.setPosition(new LatLng(location.latitude, location.longitude));
-                    }
-                }
+//
+//                for(Marker markerIt : markers){
+//                    if(markerIt.getTag().equals(key)){
+//                        //update marker location in yellow color
+//                        markerIt.setPosition(new LatLng(location.latitude, location.longitude));
+//                    }
+//                }
             }
 
             @Override
