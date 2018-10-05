@@ -141,7 +141,7 @@
                 android:paddingLeft="@dimen/space20"
                 android:layout_marginTop="0dp"
                 android:layout_marginBottom="@dimen/space20"
-                android:text=" 1500 RY"
+                android:text=" 1500 YER"
                 android:gravity="center"
                 android:textSize="40sp"/>
 

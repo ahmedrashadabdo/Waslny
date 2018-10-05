@@ -36,7 +36,7 @@
             android:id="@+id/customer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="I'm Customer"
+            android:text="I'm Passenger"
             android:layout_marginTop="@dimen/space20"
             style="@style/ButtonWhite"/>
     </LinearLayout>
