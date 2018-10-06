@@ -630,8 +630,6 @@
                     </LinearLayout>
 
 
-
-
                     <!-- Picked User Button -->
                     <LinearLayout
                         android:orientation="horizontal"

@@ -463,7 +463,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
                     }
                     if(ratingsTotal!= 0){
                         ratingsAvg = ratingSum/ratingsTotal;
-//                        RatingBar.setRating(ratingsAvg);
+                        RatingBar.setRating(ratingsAvg);
                     }
                 }
             }
@@ -707,7 +707,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
 
                 Marker mDriverMarker = Map.addMarker(new MarkerOptions()
                         .position(driverLocation)
-                        .title(key)
+                        .title("Driver")
                         .snippet(key)
                         .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_car)));
                 mDriverMarker.setTag(key);
