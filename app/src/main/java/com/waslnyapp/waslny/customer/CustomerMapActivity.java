@@ -473,7 +473,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
         });
     }
 
-    // cancel customer request when the customer click cancel
+    // cancel customer request when the customer click cancell
     private DatabaseReference driveHasEndedRef;
     private ValueEventListener driveHasEndedRefListener;
     private void getHasRideEnded(){
