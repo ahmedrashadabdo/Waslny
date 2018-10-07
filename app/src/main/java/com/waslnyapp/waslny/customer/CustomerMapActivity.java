@@ -366,6 +366,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
     |      1 -> Longitudde
     |
     *-------------------------------------------------------------------*/
+
     private Marker mDriverMarker;
     private DatabaseReference driverLocationRef;
     private ValueEventListener driverLocationRefListener;
