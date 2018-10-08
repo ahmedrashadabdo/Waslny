@@ -1,5 +1,6 @@
 package com.waslnyapp.waslny.customer;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -13,6 +14,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -177,8 +179,8 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
                     GeoFire geoFire = new GeoFire(ref);
                     geoFire.setLocation(userId, new GeoLocation(LastLocation.getLatitude(), LastLocation.getLongitude()));
                     pickupClientLocation = new LatLng(LastLocation.getLatitude(), LastLocation.getLongitude());
-                    pickupClientMarker = Map.addMarker(new MarkerOptions().position(pickupClientLocation).title("Pickup Here").icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_pickup)));
-                    btn_CallRequest.setText("Getting your Driver....");
+                    /*pickupClientMarker = Map.addMarker(new MarkerOptions().position(pickupClientLocation).title("Pickup Here").icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_pickup)));
+                   */ btn_CallRequest.setText("Getting your Driver....");
 
                     getClosestDriver(); // find the closest driver to user
                 }
@@ -241,9 +243,9 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
                 map.put("destinationLat", destinationLatLng.latitude);
                 map.put("destinationLng", destinationLatLng.longitude);
                 driverRef.updateChildren(map);// make change and update in database
-                btn_CallRequest.setText("Looking for Driver ");// change call text when click button to Looking for Driver Location
-
+                btn_CallRequest.setText("Looking for Driver Location....");// change call text when click button to Looking for Driver Location
                 getDriverAcceptor();
+                showDriverInfo.setVisibility(View.GONE);
             }
 
             @Override
@@ -263,7 +265,10 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
                     btn_CallRequest.setText("Driver accept your request");
                     getCurrentDriverLocation(DID);// display driver location in user map
                     getHasRideEnded(); // cancel customer request when the customer click cancel
+                    /*showDriverInfo.setVisibility(View.GONE);*/
                     }
+                /*showDriverInfo.setVisibility(View.GONE);*/
+
                 }
 
             @Override
@@ -455,6 +460,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
                         Glide.with(getApplication()).load(dataSnapshot.child("ProfilePhotoPath").getValue().toString()).into(driverProfileImage);
                     }
 
+                    /*getRiderating();*/
                     int ratingSum = 0;
                     float ratingsTotal = 0;
                     float ratingsAvg = 0;
@@ -474,6 +480,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
         });
     }
 
+
     // cancel customer request when the customer click cancell
     private DatabaseReference driveHasEndedRef;
     private ValueEventListener driveHasEndedRefListener;
@@ -491,10 +498,12 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
                 if(dataSnapshot.exists()){
                     Log.d(TAG, "getHasRideEnded onDataChange exists");
 
+                    /*showDriverInfo.setVisibility(View.GONE);*/
                 }else{
                     Log.d(TAG, "getHasRideEnded onDataChange not exists");
 
                     endRide(); // cancel customer request when the customer click cancel
+                    /*showDriverInfo.setVisibility(View.GONE);*/
                 }
             }
 
@@ -509,6 +518,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
         Log.d(TAG, "endRide ");
 
         Toast.makeText(context, "Your trep end", Toast.LENGTH_SHORT).show();
+        DialogTripEnded();
         showDriverInfo.setVisibility(View.GONE);
         endtrip.setVisibility(View.VISIBLE);
 
@@ -517,6 +527,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
             public void onClick(View view) {
                 Log.d(TAG, "endRide btn_rating OnClickListener");
                 setDriverRating();
+                Toast.makeText(context, "Thanks", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -536,6 +547,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
                 Log.d(TAG, "endRide btn_exit OnClickListener");
 
                 endtrip.setVisibility(View.GONE);
+                showDriverInfo.setVisibility(View.GONE);
                 requestBol = false;
                 driverLocationRef.removeEventListener(driverLocationRefListener);
                 driveHasEndedRef.removeEventListener(driveHasEndedRefListener);
@@ -543,6 +555,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
                 if (driverFoundID != null){
                     DatabaseReference driverRef = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(driverFoundID).child("customerRequest");
                     driverRef.removeValue();
+                    showDriverInfo.setVisibility(View.GONE);
                     driverFoundID = null;
                 }
 
@@ -552,11 +565,30 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference("customerRequest");
                 GeoFire geoFire = new GeoFire(ref);
                 geoFire.removeLocation(userId);
-                btn_CallRequest.setText("Call Waslny");
+                btn_CallRequest.setText("Call Wasselny");
+
                 driverName.setText("");
                 driverPhone.setText("");
                 driverCar.setText("");
                 driverProfileImage.setImageResource(R.mipmap.ic_default_user);
+                mDriverMarker.remove();
+                pickupClientMarker.remove();
+                showDriverInfo.setVisibility(View.GONE);
+
+
+                // remove the Driver Marker in user map
+                /*if (mDriverMarker != null){
+                    mDriverMarker.remove();
+                }
+                btn_CallRequest.setText("Wasselny");
+                // remove the Driver Marker in user map
+                showDriverInfo.setVisibility(View.GONE);
+                driverName.setText("");
+                driverPhone.setText("");
+                driverCar.setText("");
+                driverProfileImage.setImageResource(R.mipmap.ic_default_user);
+                mDriverMarker.remove();
+                pickupClientMarker.remove();*/
             }
         });
 
@@ -832,6 +864,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
 
                     if (distance < 100) {
                         btn_CallRequest.setText("Driver's Here");// to notice when driver arrive
+                        DialogDriverArrived();
                     } else {
                         btn_CallRequest.setText("Driver Found: " + String.valueOf(distance));
                     }
@@ -892,11 +925,15 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
                 String requestId = v.substring(1,21);
                 Log.d(TAG,"onPositiveButtonClicked requestId=("+requestId+ ")");
                 DatabaseReference historyRef = FirebaseDatabase.getInstance().getReference().child("Saved");
+                DatabaseReference driverRef = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(DID).child("rating");
                 HashMap<String, Object> map = new HashMap<String, Object>();
                 map.put("rating", rat);
                 historyRef.child(requestId).updateChildren(map);
+
+                driverRef.child(requestId).setValue(rat);
                 DatabaseReference driverRefCopy = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(DID);
                 driverRefCopy.child("Picked").removeValue();
+                driverRefCopy.child("customerRequest").removeValue();
 
             }
 
@@ -905,6 +942,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
 
             }
         });
+
 
     }
 
@@ -916,4 +954,72 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
         driverFoundID=null;
 
     }
+
+    private void DialogDriverArrived(){
+
+        //Code Snippet For Alert Dialog With Action
+        //Set Message and Title
+        AlertDialog.Builder builder = new AlertDialog.Builder(CustomerMapActivity.this);
+        builder.setMessage("Driver Has Arrived ..")
+                .setTitle("Message");
+
+        //Set When SEND Button Click
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+                Toast.makeText(CustomerMapActivity.this, "Your Trip Has Begin", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        //Set When Cancel Button Click
+                /*builder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                        //Dismissing the alertDialog
+                        dialogInterface.dismiss();
+                    }
+                });
+*/
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
+
+    }
+
+    private void DialogTripEnded(){
+
+        //Code Snippet For Alert Dialog With Action
+        //Set Message and Title
+        AlertDialog.Builder builder = new AlertDialog.Builder(CustomerMapActivity.this);
+        builder.setMessage("Arrived Destenation ..")
+                .setTitle("Message");
+
+        //Set When SEND Button Click
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+                /*Toast.makeText(CustomerMapActivity.this, "Your Trip Has Ended", Toast.LENGTH_LONG).show();*/
+            }
+        });
+
+        //Set When Cancel Button Click
+                /*builder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                        //Dismissing the alertDialog
+                        dialogInterface.dismiss();
+                    }
+                });
+*/
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
+
+    }
+
+
 }

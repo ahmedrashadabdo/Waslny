@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.waslnyapp.waslny.customer.CustomerMapActivity;
 import com.waslnyapp.waslny.driver.EndTrip;
 
 public class PaymentsActivity extends AppCompatActivity {
@@ -24,7 +25,7 @@ public class PaymentsActivity extends AppCompatActivity {
         Back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(PaymentsActivity.this, EndTrip.class);
+                Intent intent = new Intent(PaymentsActivity.this, CustomerMapActivity.class);
                 startActivity(intent);
                 finish();
             }
