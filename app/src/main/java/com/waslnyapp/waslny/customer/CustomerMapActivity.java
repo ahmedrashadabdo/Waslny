@@ -97,6 +97,8 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
     private RatingBar RatingBar;
     private Button btn_CallByApp, btn_CallByPhone,btn_CancelReq;
     private Button btn_pay,btn_rating, btn_exit;
+    Boolean arrive = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -546,6 +548,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
             public void onClick(View view) {
                 Log.d(TAG, "endRide btn_exit OnClickListener");
 
+                arrive= false;
                 endtrip.setVisibility(View.GONE);
                 showDriverInfo.setVisibility(View.GONE);
                 requestBol = false;
@@ -862,9 +865,12 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
 
                     float distance = loc1.distanceTo(loc2);
 
-                    if (distance < 100) {
+                    if (distance < 100 && !arrive) {
                         btn_CallRequest.setText("Driver's Here");// to notice when driver arrive
                         DialogDriverArrived();
+                        arrive = true;
+
+
                     } else {
                         btn_CallRequest.setText("Driver Found: " + String.valueOf(distance));
                     }
